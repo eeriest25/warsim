@@ -1,3 +1,4 @@
+import asyncio
 import random
 import discord
 
@@ -14,251 +15,6 @@ own_force = 0
 own_mult = 0
 
 
-'''def runsim():
-    enemy = random.randint(1, enemy_force * enemy_mult)
-    own = random.randint(1, own_force * own_mult)
-    if own > enemy:
-        print('You win')
-        win_lose = 1
-    else:
-        print('You lose')
-        win_lose = 0
-
-    def digittest():
-        enemy_copy = enemy
-        own_copy = own
-        count_enemy = 0
-        count_own = 0
-        while enemy_copy > 0:
-            count_enemy = count_enemy + 1
-            enemy_copy = enemy_copy // 10
-        while own_copy > 0:
-            count_own = count_own + 1
-            own_copy = own_copy // 10
-        if win_lose == 1:
-            add_digits = count_own - count_enemy
-            return add_digits
-        else:
-            add_digits = count_enemy - count_own
-            return add_digits
-
-    def casualtyroll():
-        if digittest() == 0: #try and get the minus two rule
-            roll1 = random.randint(1, 5)
-            roll2 = random.randint(1, 5)
-            lowroll = 0
-            highroll = 0
-
-            while roll1 == roll2:
-                roll2 = random.randint(1, 5)
-            if roll1 > roll2:
-                if roll1 <= 2:
-                    highroll = roll1
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll1 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll1 >= 4:
-                    while roll1 - roll2 == 1:
-                        roll2 = random.randint(1, roll1 - 2)
-                    highroll = roll1
-                    lowroll = roll2
-                    return highroll, lowroll
-            if roll1 < roll2:
-                if roll2 <= 2:
-                    highroll = roll2
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll2 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll2 >= 4:
-                    while roll2 - roll1 <= 1:
-                        roll1 = random.randint(1, roll2 - 2)
-                    highroll = roll2
-                    lowroll = roll1
-                    return highroll, lowroll
-        if digittest() == 1:
-            roll1 = random.randint(1, 6)
-            roll2 = random.randint(1, 4)
-            lowroll = 0
-            highroll = 0
-
-            while roll1 == roll2:
-                roll2 = random.randint(1, 4)
-            if roll1 > roll2:
-                if roll1 <= 2:
-                    highroll = roll1
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll1 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll1 >= 4:
-                    while roll1 - roll2 == 1:
-                        roll2 = random.randint(1, roll1 - 2)
-                    highroll = roll1
-                    lowroll = roll2
-                    return highroll, lowroll
-            if roll1 < roll2:
-                if roll2 <= 2:
-                    highroll = roll2
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll2 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll2 >= 4:
-                    while roll2 - roll1 <= 1:
-                        roll1 = random.randint(1, roll2 - 2)
-                    highroll = roll2
-                    lowroll = roll1
-                    return highroll, lowroll
-        if digittest() == 2:
-            roll1 = random.randint(1, 7)
-            roll2 = random.randint(1, 3)
-            lowroll = 0
-            highroll = 0
-
-            while roll1 == roll2:
-                roll2 = random.randint(1, 3)
-            if roll1 > roll2:
-                if roll1 <= 2:
-                    highroll = roll1
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll1 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll1 >= 4:
-                    while roll1 - roll2 == 1:
-                        roll2 = random.randint(1, roll1 - 2)
-                    highroll = roll1
-                    lowroll = roll2
-                    return highroll, lowroll
-            if roll1 < roll2:
-                if roll2 <= 2:
-                    highroll = roll2
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll2 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll2 >= 4:
-                    while roll2 - roll1 <= 1:
-                        roll1 = random.randint(1, roll2 - 2)
-                    highroll = roll2
-                    lowroll = roll1
-                    return highroll, lowroll
-        if digittest() == 3:
-            roll1 = random.randint(1, 8)
-            roll2 = random.randint(1, 2)
-            lowroll = 0
-            highroll = 0
-
-            while roll1 == roll2:
-                roll2 = random.randint(1, 2)
-            if roll1 > roll2:
-                if roll1 <= 2:
-                    highroll = roll1
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll1 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll1 >= 4:
-                    while roll1 - roll2 == 1:
-                        roll2 = random.randint(1, roll1 - 2)
-                    highroll = roll1
-                    lowroll = roll2
-                    return highroll, lowroll
-            if roll1 < roll2:
-                if roll2 <= 2:
-                    highroll = roll2
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll2 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll2 >= 4:
-                    while roll2 - roll1 <= 1:
-                        roll1 = random.randint(1, roll2 - 2)
-                    highroll = roll2
-                    lowroll = roll1
-                    return highroll, lowroll
-        if digittest() == 4:
-            roll1 = random.randint(1, 9)
-            roll2 = random.randint(1, 1)
-            lowroll = 0
-            highroll = 0
-
-            while roll1 == roll2:
-                roll2 = random.randint(1, 2)
-            if roll1 > roll2:
-                if roll1 <= 2:
-                    highroll = roll1
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll1 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll1 >= 4:
-                    while roll1 - roll2 == 1:
-                        roll2 = random.randint(1, roll1 - 2)
-                    highroll = roll1
-                    lowroll = roll2
-                    return highroll, lowroll
-            if roll1 < roll2:
-                if roll2 <= 2:
-                    highroll = roll2
-                    lowroll = 0
-                    return highroll, lowroll
-                if roll2 == 3:
-                    highroll = 3
-                    lowroll = 1
-                    return highroll, lowroll
-                if roll2 >= 4:
-                    while roll2 - roll1 <= 1:
-                        roll1 = random.randint(1, roll2 - 2)
-                    highroll = roll2
-                    lowroll = roll1
-                    return highroll, lowroll
-        if digittest() >= 5:
-            highroll = random.randint(1, 10)
-            lowroll = 0
-            return highroll, lowroll
-
-    def casualtydo(highroll, lowroll, ownforce, enemyforce, winlose):
-        if winlose == 1:
-            owncas = lowroll
-            enemycas = highroll
-            ownforce = ((10 - owncas) / 10) * ownforce
-            enemyforce = ((10 - enemycas) / 10) * enemyforce
-            print('Own force: ' + str(ownforce) + '\n Enemy Force: ' + str(enemyforce))
-        if winlose == 0:
-            owncas = highroll
-            enemycas = lowroll
-            ownforce = ((10 - owncas) / 10) * ownforce
-            enemyforce = ((10 - enemycas) / 10) * enemyforce
-            print('Own force: ' + str(ownforce) + '\nEnemy Force: ' + str(enemyforce))
-
-
-
-
-    digittest()
-    highroll, lowroll = casualtyroll()
-    print('(' + str(highroll) + ', ' + str(lowroll) + ')')
-    casualtydo(highroll, lowroll, own_force, enemy_force, win_lose)'''
 
 
 
@@ -272,8 +28,66 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('run sim'):
-        await message.channel.send('What are your forces?')
+    if message.content.startswith('Run sim'):
+
+        await message.channel.send('Is this a land, air, or naval battle?')
+        massage = await client.wait_for('message')
+        massage = massage.content
+        print(massage)
+
+        if massage == 'Land':
+            await message.channel.send('Do you have any weak troops?')
+            try:
+                weak_troop = await client.wait_for('message')
+                weak_troop = int(weak_troop.content)
+            except:
+                weak_troop = 0
+                pass
+            await message.channel.send('Do you have any medium troops?')
+            try:
+                medium_troop = await client.wait_for('message')
+                medium_troop = int(medium_troop.content)
+            except:
+                medium_troop = 0
+                pass
+            await message.channel.send('Do you have any strong troops?')
+            try:
+                strong_troop = await client.wait_for('message')
+                strong_troop = int(strong_troop.content)
+            except:
+                strong_troop = 0
+                pass
+        elif massage == 'Air':
+            await message.channel.send('Do you have any weak planes?')
+            try:
+                weak_plane = await client.wait_for('message')
+                weak_plane = int(weak_plane.content)
+            except:
+                weak_plane = 0
+                pass
+            await message.channel.send('Do you have any medium planes?')
+            try:
+                medium_plane = await client.wait_for('message')
+                medium_plane = int(medium_plane.content)
+            except:
+                medium_plane = 0
+                pass
+            await message.channel.send('Do you have any strong planes?')
+            try:
+                strong_plane = await client.wait_for('message')
+                strong_plane = int(strong_plane.content)
+            except:
+                strong_plane = 0
+                pass
+        elif massage == 'Naval':
+            await message.channel.send('naval baby')
+        else:
+            await message.channel.send('uh oh')
+
+        own = (weak_troop) + (medium_troop * 3) + (strong_troop * 5)
+        await message.channel.send(own)
+
+        '''await message.channel.send('What are your forces?')
 
         try:
             own_force = await client.wait_for('message')
@@ -607,7 +421,7 @@ async def on_message(message):
 
                 return result, resultroll, resultforce, ownforce, enemyforce
 
-        result, resultroll, resultforce, ownforce, enemyforce = runsim()
+        result, resultroll, resultforce, ownforce, enemyforce = runsim()'''
         '''while ownforce >= (original_own_force * 0.1) and enemyforce >= (original_enemy_force * 0.1):
             runsim()'''
         '''if own_force > enemyforce:
@@ -616,7 +430,7 @@ async def on_message(message):
         else:
             await message.channel.send('You lose' + '\n' + str(enemyforce))
             print(enemyforce, original_enemy_force)'''
-        await message.channel.send(result + '\n' + resultroll + '\n' + resultforce)
+        '''await message.channel.send(result + '\n' + resultroll + '\n' + resultforce)'''
 
 
 
