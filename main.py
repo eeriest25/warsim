@@ -38,53 +38,119 @@ async def on_message(message):
         if massage == 'Land':
             await message.channel.send('Do you have any weak troops?')
             try:
-                weak_troop = await client.wait_for('message')
-                weak_troop = int(weak_troop.content)
+                weak_troop_own = await client.wait_for('message')
+                weak_troop_own = int(weak_troop_own.content)
             except:
-                weak_troop = 0
+                weak_troop_own = 0
                 pass
             await message.channel.send('Do you have any medium troops?')
             try:
-                medium_troop = await client.wait_for('message')
-                medium_troop = int(medium_troop.content)
+                medium_troop_own = await client.wait_for('message')
+                medium_troop_own = int(medium_troop_own.content)
             except:
-                medium_troop = 0
+                medium_troop_own = 0
                 pass
             await message.channel.send('Do you have any strong troops?')
             try:
-                strong_troop = await client.wait_for('message')
-                strong_troop = int(strong_troop.content)
+                strong_troop_own = await client.wait_for('message')
+                strong_troop_own = int(strong_troop_own.content)
             except:
-                strong_troop = 0
+                strong_troop_own = 0
                 pass
-        elif massage == 'Air':
             await message.channel.send('Do you have any weak planes?')
             try:
-                weak_plane = await client.wait_for('message')
-                weak_plane = int(weak_plane.content)
+                weak_plane_own = await client.wait_for('message')
+                weak_plane_own = int(weak_plane_own.content)
             except:
-                weak_plane = 0
+                weak_plane_own = 0
                 pass
             await message.channel.send('Do you have any medium planes?')
             try:
-                medium_plane = await client.wait_for('message')
-                medium_plane = int(medium_plane.content)
+                medium_plane_own = await client.wait_for('message')
+                medium_plane_own = int(medium_plane_own.content)
             except:
-                medium_plane = 0
+                medium_plane_own = 0
                 pass
             await message.channel.send('Do you have any strong planes?')
             try:
-                strong_plane = await client.wait_for('message')
-                strong_plane = int(strong_plane.content)
+                strong_plane_own = await client.wait_for('message')
+                strong_plane_own = int(strong_plane_own.content)
             except:
-                strong_plane = 0
+                strong_plane_own = 0
                 pass
+            await message.channel.send('Do you have any weak tanks?')
+            try:
+                weak_tank_own = await client.wait_for('message')
+                weak_tank_own = int(weak_tank_own.content)
+            except:
+                weak_tank_own = 0
+                pass
+            await message.channel.send('Do you have any medium tanks?')
+            try:
+                medium_tank_own = await client.wait_for('message')
+                medium_tank_own = int(medium_tank_own.content)
+            except:
+                medium_tank_own = 0
+                pass
+            await message.channel.send('Do you have any strong tanks?')
+            try:
+                strong_tank_own = await client.wait_for('message')
+                strong_tank_own = int(strong_tank_own.content)
+            except:
+                strong_tank_own = 0
+                pass
+            await message.channel.send('Do you have any weak ships bombarding?')
+            try:
+                weak_ship_own = await client.wait_for('message')
+                weak_ship_own = int(weak_ship_own.content)
+            except:
+                weak_ship_own = 0
+                pass
+            await message.channel.send('Do you have any medium ships bombarding?')
+            try:
+                medium_ship_own = await client.wait_for('message')
+                medium_ship_own = int(medium_ship_own.content)
+            except:
+                medium_ship_own = 0
+                pass
+            await message.channel.send('Do you have any strong ships bombarding?')
+            try:
+                strong_ship_own = await client.wait_for('message')
+                strong_ship_own = int(strong_ship_own.content)
+            except:
+                strong_ship_own = 0
+                pass
+            await message.channel.send('Do you have any 20 KM artillery?')
+            try:
+                weak_artillery_own = await client.wait_for('message')
+                weak_artillery_own = int(weak_artillery_own.content)
+            except:
+                weak_artillery_own = 0
+                pass
+            await message.channel.send('Do you have any 40/60 KM artillery?')
+            try:
+                medium_artillery_own = await client.wait_for('message')
+                medium_artillery_own = int(medium_artillery_own.content)
+            except:
+                medium_artillery_own = 0
+                pass
+            await message.channel.send('Do you have any 100 KM artillery?')
+            try:
+                strong_artillery_own = await client.wait_for('message')
+                strong_artillery_own = int(strong_artillery_own.content)
+            except:
+                strong_artillery_own = 0
+                pass
+        elif massage == 'Air':
+            await message.channel.send('air baby')
         elif massage == 'Naval':
             await message.channel.send('naval baby')
         else:
             await message.channel.send('uh oh')
 
-        own = (weak_troop) + (medium_troop * 3) + (strong_troop * 5)
+        own = (weak_troop_own) + (medium_troop_own * 3) + (strong_troop_own * 5) + (weak_plane_own * 50) + (medium_plane_own * 150) + \
+              (strong_plane_own * 250) + (weak_tank_own * 20) + (medium_tank_own * 60) + (strong_tank_own * 100) + \
+              (weak_ship_own * 100) + (medium_ship_own * 300) + (strong_ship_own * 500)
         await message.channel.send(own)
 
         '''await message.channel.send('What are your forces?')
